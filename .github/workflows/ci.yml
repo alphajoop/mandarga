@@ -24,7 +24,6 @@ jobs:
         uses: actions/setup-node@v6
         with:
           node-version: 20
-          cache: "bun"
 
       - name: Install dependencies
         run: bun install --frozen-lockfile
@@ -49,7 +48,6 @@ jobs:
         uses: actions/setup-node@v6
         with:
           node-version: 20
-          cache: "bun"
 
       - name: Install dependencies
         run: bun install --frozen-lockfile
@@ -79,7 +77,6 @@ jobs:
         uses: actions/setup-node@v6
         with:
           node-version: 20
-          cache: "bun"
 
       - name: Install dependencies
         run: bun install --frozen-lockfile
