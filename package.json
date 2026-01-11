@@ -5,6 +5,7 @@
     "build": "turbo run build",
     "dev": "turbo run dev",
     "test": "turbo run test",
+    "prisma:generate": "turbo run prisma:generate",
     "lint": "biome lint .",
     "format": "biome format --write .",
     "format:check": "biome format .",
