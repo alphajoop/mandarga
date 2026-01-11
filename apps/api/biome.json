@@ -5,6 +5,10 @@
       "style": {
         "useImportType": "off"
       }
+    },
+    "domains": {
+      "next": "none",
+      "react": "none"
     }
   },
   "javascript": {
