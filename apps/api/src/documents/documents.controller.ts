@@ -1,7 +1,6 @@
 import {
   Controller,
   Delete,
-  FileTypeValidator,
   Get,
   Ip,
   MaxFileSizeValidator,
@@ -25,7 +24,6 @@ import {
 import { JwtAuthGuard } from "../auth/guards/jwt-auth.guard";
 import { DocumentsService } from "./documents.service";
 import { DocumentResponseDto } from "./dto/document-response.dto";
-import { CreateDocumentDto } from "./dto/create-document.dto";
 
 interface AuthenticatedRequest extends Request {
   user: { userId: string; email: string };
@@ -49,15 +47,16 @@ export class DocumentsController {
         file: {
           type: "string",
           format: "binary",
-          description: "Fichier PDF à téléverser (max 10MB)"
-        }
+          description: "Fichier PDF à téléverser (max 10MB)",
+        },
       },
-      required: ["file"]
-    }
+      required: ["file"],
+    },
   })
-  @ApiOperation({ 
+  @ApiOperation({
     summary: "Téléverser un document",
-    description: "Téléverse un fichier PDF (max 10MB) et crée un nouveau document"
+    description:
+      "Téléverse un fichier PDF (max 10MB) et crée un nouveau document",
   })
   @ApiResponse({
     status: 201,
@@ -66,9 +65,9 @@ export class DocumentsController {
       type: "object",
       properties: {
         id: { type: "string", description: "ID du document créé" },
-        message: { type: "string", description: "Message de confirmation" }
-      }
-    }
+        message: { type: "string", description: "Message de confirmation" },
+      },
+    },
   })
   @ApiResponse({
     status: 400,
@@ -85,9 +84,8 @@ export class DocumentsController {
       new ParseFilePipe({
         validators: [
           new MaxFileSizeValidator({ maxSize: 10 * 1024 * 1024 }), // 10MB
-          new FileTypeValidator({ fileType: 'application/pdf' }),
         ],
-        errorHttpStatusCode: 400,
+        fileIsRequired: true,
       }),
     )
     file: Express.Multer.File,

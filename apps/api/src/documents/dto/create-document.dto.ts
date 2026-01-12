@@ -1,11 +1,11 @@
 import { ApiProperty } from "@nestjs/swagger";
-import { IsString, IsNotEmpty } from "class-validator";
+import { IsNotEmpty, IsString } from "class-validator";
 
 export class CreateDocumentDto {
-  @ApiProperty({ 
+  @ApiProperty({
     type: "string",
     format: "binary",
-    description: "Fichier PDF à téléverser (max 10MB)"
+    description: "Fichier PDF à téléverser (max 10MB)",
   })
   @IsString()
   @IsNotEmpty()
