@@ -1,5 +1,5 @@
-import { IsString, IsOptional, IsEnum } from "class-validator";
 import { ActorType } from "@prisma/client";
+import { IsEnum, IsOptional, IsString } from "class-validator";
 
 export class LogAuditDto {
   @IsString()
@@ -19,5 +19,5 @@ export class LogAuditDto {
   ipAddress: string;
 
   @IsOptional()
-  metadata?: Record<string, any> | null;
+  metadata?: Record<string, unknown> | null;
 }

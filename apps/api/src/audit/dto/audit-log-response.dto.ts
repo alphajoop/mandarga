@@ -21,5 +21,5 @@ export class AuditLogResponseDto {
   createdAt!: Date;
 
   @ApiProperty({ required: false })
-  metadata?: Record<string, any> | null;
+  metadata?: Record<string, unknown> | null;
 }
