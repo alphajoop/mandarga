@@ -1,5 +1,5 @@
 import { Injectable } from "@nestjs/common";
-import { ActorType } from "@prisma/client";
+import { ActorType, Prisma } from "@prisma/client";
 import { PrismaService } from "../prisma/prisma.service";
 import { LogAuditDto } from "./dto/log-audit.dto";
 //import { AuditLogResponseDto } from "./dto/audit-log-response.dto";
@@ -16,7 +16,7 @@ export class AuditService {
         actorId: dto.actorId,
         action: dto.action,
         ipAddress: dto.ipAddress,
-        metadata: dto.metadata || {},
+        metadata: (dto.metadata || {}) as Prisma.JsonValue,
       },
     });
   }
