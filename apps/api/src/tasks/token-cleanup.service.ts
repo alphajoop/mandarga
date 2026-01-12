@@ -1,6 +1,6 @@
 import { Injectable } from "@nestjs/common";
 import { Cron, CronExpression } from "@nestjs/schedule";
-import { AuthService } from "../auth.service";
+import { AuthService } from "../auth/auth.service";
 
 @Injectable()
 export class TokenCleanupService {

@@ -3,18 +3,15 @@ import { ConfigModule, ConfigService } from "@nestjs/config";
 import type { JwtModuleOptions } from "@nestjs/jwt";
 import { JwtModule } from "@nestjs/jwt";
 import { PassportModule } from "@nestjs/passport";
-import { ScheduleModule } from "@nestjs/schedule";
 import { EmailModule } from "../email/email.module";
 import { AuthController } from "./auth.controller";
 import { AuthService } from "./auth.service";
 import { JwtStrategy } from "./strategies/jwt.strategy";
 import { LocalStrategy } from "./strategies/local.strategy";
-import { TokenCleanupService } from "./tasks/token-cleanup.service";
 
 @Module({
   imports: [
     PassportModule,
-    ScheduleModule.forRoot(), // Pour les tâches cron
     EmailModule,
     JwtModule.registerAsync({
       imports: [ConfigModule],
@@ -33,7 +30,7 @@ import { TokenCleanupService } from "./tasks/token-cleanup.service";
     }),
   ],
   controllers: [AuthController],
-  providers: [AuthService, LocalStrategy, JwtStrategy, TokenCleanupService],
+  providers: [AuthService, LocalStrategy, JwtStrategy],
   exports: [AuthService],
 })
 export class AuthModule {}
