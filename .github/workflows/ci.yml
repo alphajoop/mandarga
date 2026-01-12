@@ -52,7 +52,12 @@ jobs:
         run: bun install --frozen-lockfile
 
       - name: Generate Prisma client
-        run: cd apps/api && bun run prisma:generate
+        run: |
+          cd apps/api
+          pwd
+          ls -la
+          echo "DATABASE_URL is set: ${DATABASE_URL:0:20}..."
+          bun run prisma:generate
 
       - name: Type check
         run: bun run check-types
