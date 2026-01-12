@@ -52,7 +52,7 @@ jobs:
         run: bun install --frozen-lockfile
 
       - name: Generate Prisma client
-        run: bun run prisma:generate
+        run: cd apps/api && bun run prisma:generate
 
       - name: Type check
         run: bun run check-types
