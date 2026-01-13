@@ -59,6 +59,11 @@ jobs:
           echo "DATABASE_URL is set: ${DATABASE_URL:0:20}..."
           bun run prisma:generate
 
+      - name: Build shared package
+        run: |
+          cd packages/shared
+          bun run build
+
       - name: Type check
         run: bun run check-types
 
@@ -97,6 +102,11 @@ jobs:
           ls -la
           echo "DATABASE_URL is set: ${DATABASE_URL:0:20}..."
           bun run prisma:generate
+
+      - name: Build shared package
+        run: |
+          cd packages/shared
+          bun run build
 
       - name: Cache turbo build setup
         uses: actions/cache@v5
