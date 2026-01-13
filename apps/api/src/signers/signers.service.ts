@@ -5,13 +5,13 @@ import {
   NotFoundException,
 } from "@nestjs/common";
 import { AuthMethod, DocumentStatus, SignerStatus } from "@prisma/client";
+import { ActorType, AddSignersDto } from "@repo/shared";
 import { v4 as uuidv4 } from "uuid";
 import { AuditService } from "../audit/audit.service";
 import { EmailService } from "../email/email.service";
 import { OtpService } from "../otp/otp.service";
 import { PrismaService } from "../prisma/prisma.service";
 import { StorageService } from "../storage/storage.service";
-import { AddSignersDto } from "./dto/add-signers.dto";
 
 @Injectable()
 export class SignersService {
@@ -83,7 +83,7 @@ export class SignersService {
     // Log audit
     await this.auditService.log({
       documentId,
-      actorType: "USER",
+      actorType: ActorType.USER,
       actorId: userId,
       action: "SIGNERS_ADDED",
       ipAddress: ip,
@@ -110,7 +110,7 @@ export class SignersService {
 
       await this.auditService.log({
         documentId,
-        actorType: "SYSTEM",
+        actorType: ActorType.SYSTEM,
         actorId: null,
         action: "INVITATION_SENT",
         ipAddress: ip,
@@ -176,7 +176,7 @@ export class SignersService {
 
       await this.auditService.log({
         documentId: signer.documentId,
-        actorType: "SIGNER",
+        actorType: ActorType.SIGNER,
         actorId: signer.id,
         action: "DOCUMENT_VIEWED",
         ipAddress: "unknown",

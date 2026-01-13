@@ -15,12 +15,14 @@ import {
   ApiTags,
 } from "@nestjs/swagger";
 import { User } from "@prisma/client";
+import {
+  LoginDto,
+  RefreshTokenDto,
+  RegisterDto,
+  ResendVerificationDto,
+  VerifyEmailDto,
+} from "@repo/shared";
 import { AuthService } from "./auth.service";
-import { LoginDto } from "./dto/login.dto";
-import { RefreshTokenDto } from "./dto/refresh-token.dto";
-import { RegisterDto } from "./dto/register.dto";
-import { ResendVerificationDto } from "./dto/resend-verification.dto";
-import { VerifyEmailDto } from "./dto/verify-email.dto";
 import { TokensEntity } from "./entities/tokens.entity";
 import { UserEntity } from "./entities/user.entity";
 import { JwtAuthGuard } from "./guards/jwt-auth.guard";

@@ -5,10 +5,10 @@ import {
   NotFoundException,
 } from "@nestjs/common";
 import { DocumentStatus } from "@prisma/client";
+import { ActorType, DocumentResponseDto } from "@repo/shared";
 import { AuditService } from "../audit/audit.service";
 import { PrismaService } from "../prisma/prisma.service";
 import { StorageService } from "../storage/storage.service";
-import { DocumentResponseDto } from "./dto/document-response.dto";
 
 @Injectable()
 export class DocumentsService {
@@ -56,7 +56,7 @@ export class DocumentsService {
     // Log audit
     await this.auditService.log({
       documentId: document.id,
-      actorType: "USER",
+      actorType: ActorType.USER,
       actorId: userId,
       action: "DOCUMENT_UPLOADED",
       ipAddress: ip,
@@ -155,7 +155,7 @@ export class DocumentsService {
 
     await this.auditService.log({
       documentId,
-      actorType: "USER",
+      actorType: ActorType.USER,
       actorId: userId,
       action: "DOCUMENT_CANCELLED",
       ipAddress: ip,

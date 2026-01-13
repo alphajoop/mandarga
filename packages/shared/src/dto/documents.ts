@@ -11,3 +11,26 @@ export class CreateDocumentDto {
   @IsNotEmpty()
   file!: Express.Multer.File;
 }
+
+export class DocumentResponseDto {
+  @ApiProperty()
+  id!: string;
+
+  @ApiProperty()
+  originalFilename!: string;
+
+  @ApiProperty()
+  filePath!: string;
+
+  @ApiProperty()
+  fileHashSha256!: string;
+
+  @ApiProperty()
+  status!: string;
+
+  @ApiProperty()
+  createdAt!: Date;
+
+  @ApiProperty()
+  updatedAt!: Date;
+}

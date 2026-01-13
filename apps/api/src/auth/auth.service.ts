@@ -9,10 +9,10 @@ import {
 import { ConfigService } from "@nestjs/config";
 import { JwtService } from "@nestjs/jwt";
 import { User } from "@prisma/client";
+import { RegisterDto } from "@repo/shared";
 import * as bcrypt from "bcrypt";
 import { EmailService } from "../email/email.service";
 import { PrismaService } from "../prisma/prisma.service";
-import { RegisterDto } from "./dto/register.dto";
 import { TokensEntity } from "./entities/tokens.entity";
 import { UserEntity } from "./entities/user.entity";
 

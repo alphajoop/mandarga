@@ -15,8 +15,8 @@ import {
   ApiTags,
 } from "@nestjs/swagger";
 import { AuthMethod, SignerStatus } from "@prisma/client";
+import { AddSignersDto } from "@repo/shared";
 import { JwtAuthGuard } from "../auth/guards/jwt-auth.guard";
-import { AddSignersDto } from "./dto/add-signers.dto";
 import { SignersService } from "./signers.service";
 
 interface AuthenticatedRequest extends Request {

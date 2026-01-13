@@ -1,5 +1,4 @@
 import { ApiProperty } from "@nestjs/swagger";
-import { AuthMethod } from "@prisma/client";
 import { Transform, Type } from "class-transformer";
 import {
   ArrayMinSize,
@@ -12,6 +11,11 @@ import {
   MinLength,
   ValidateNested,
 } from "class-validator";
+
+export enum AuthMethod {
+  OTP = "OTP",
+  EMAIL = "EMAIL",
+}
 
 class SignerDto {
   @ApiProperty({ example: "Amadou Diop" })

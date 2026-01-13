@@ -1,7 +1,7 @@
 import { Injectable } from "@nestjs/common";
 import { ActorType, Prisma } from "@prisma/client";
+import { LogAuditDto } from "@repo/shared";
 import { PrismaService } from "../prisma/prisma.service";
-import { LogAuditDto } from "./dto/log-audit.dto";
 //import { AuditLogResponseDto } from "./dto/audit-log-response.dto";
 
 @Injectable()

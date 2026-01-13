@@ -21,9 +21,9 @@ import {
   ApiResponse,
   ApiTags,
 } from "@nestjs/swagger";
+import { DocumentResponseDto } from "@repo/shared";
 import { JwtAuthGuard } from "../auth/guards/jwt-auth.guard";
 import { DocumentsService } from "./documents.service";
-import { DocumentResponseDto } from "./dto/document-response.dto";
 
 interface AuthenticatedRequest extends Request {
   user: { userId: string; email: string };

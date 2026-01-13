@@ -1,6 +1,6 @@
 import { Body, Controller, Headers, Ip, Param, Post } from "@nestjs/common";
 import { ApiOperation, ApiResponse, ApiTags } from "@nestjs/swagger";
-import { SignDocumentDto } from "./dto/sign-document.dto";
+import { SignDocumentDto } from "@repo/shared";
 import { SignaturesService } from "./signatures.service";
 
 @ApiTags("Signatures")
